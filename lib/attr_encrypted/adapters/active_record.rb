@@ -18,7 +18,7 @@ if defined?(ActiveRecord::Base)
             attr_encrypted_options[:encode] = true
             class << self
               alias_method :attr_encryptor, :attr_encrypted
-              alias_method_chain :method_missing, :attr_encrypted
+              # alias_method_chain :method_missing, :attr_encrypted
               alias_method :undefine_attribute_methods, :reset_column_information if ::ActiveRecord::VERSION::STRING < "3"
             end
 
@@ -34,13 +34,13 @@ if defined?(ActiveRecord::Base)
               def assign_attributes_with_attr_encrypted(*args)
                 perform_attribute_assignment :assign_attributes_without_attr_encrypted, *args
               end
-              alias_method_chain :assign_attributes, :attr_encrypted
+              # alias_method_chain :assign_attributes, :attr_encrypted
             end
 
             def attributes_with_attr_encrypted=(*args)
               perform_attribute_assignment :attributes_without_attr_encrypted=, *args
             end
-            alias_method_chain :attributes=, :attr_encrypted
+            # alias_method_chain :attributes=, :attr_encrypted
           end
         end
 
