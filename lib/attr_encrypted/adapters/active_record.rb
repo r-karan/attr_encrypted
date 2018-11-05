@@ -13,7 +13,7 @@ if defined?(ActiveRecord::Base)
               end
               result
             end
-            alias_method_chain :reload, :attr_encrypted
+            # alias_method_chain :reload, :attr_encrypted
 
             attr_encrypted_options[:encode] = true
             class << self
